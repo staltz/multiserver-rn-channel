@@ -1,6 +1,6 @@
 {
   "name": "multiserver-rn-channel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A multiserver plugin for Node.js Mobile 'channels'",
   "main": "index.js",
   "scripts": {
