@@ -10,8 +10,8 @@ module.exports = function makePlugin(opts) {
         onError(
           new Error(
             'multiserver-rn-channel plugin requires the channel given in ' +
-              'the opts argument when starting the server',
-          ),
+              'the opts argument when starting the server'
+          )
         );
         return function() {};
       }
@@ -26,7 +26,7 @@ module.exports = function makePlugin(opts) {
         if (!channel) {
           throw new Error(
             'multiserver-rn-channel plugin requires the channel given in ' +
-              'the opts argument when starting the client',
+              'the opts argument when starting the client'
           );
         }
         const stream = toDuplex(channel);
