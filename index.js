@@ -4,6 +4,10 @@ module.exports = function makePlugin(opts) {
   return {
     name: 'channel',
 
+    scope: function() { 
+      return opts.scope || 'private';
+    },
+
     server: function(onConnection, onError) {
       const channel = opts || opts.channel;
       if (!channel) {

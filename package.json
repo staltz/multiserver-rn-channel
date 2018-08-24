@@ -13,7 +13,7 @@
     "pull-rn-channel": "1.1.x"
   },
   "devDependencies": {
-    "multiserver": "^1.13.2",
+    "multiserver": "1.13.x",
     "muxrpc": "6.4.1",
     "pull-stream": "^3.6.9",
     "stream-to-pull-stream": "^1.7.2",
