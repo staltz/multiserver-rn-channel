@@ -5,14 +5,26 @@ var MultiServer = require('multiserver');
 var EventEmitter = require('events');
 var rnChannelPlugin = require('./index');
 
+var latestRandom = 7;
+var primeMult = 37;
+var primeMax = 61;
+function deterministicPseudoRandomNumber() {
+  latestRandom = (latestRandom * primeMult) % primeMax;
+  return latestRandom;
+}
+
 function createChannels() {
   var serverChannel = new EventEmitter();
   var clientChannel = new EventEmitter();
   serverChannel.send = function(raw) {
-    clientChannel.emit('message', raw);
+    setTimeout(() => {
+      clientChannel.emit('message', raw);
+    }, deterministicPseudoRandomNumber() * 10);
   };
   clientChannel.send = function(raw) {
-    serverChannel.emit('message', raw);
+    setTimeout(() => {
+      serverChannel.emit('message', raw);
+    }, deterministicPseudoRandomNumber() * 10);
   };
   return {serverChannel, clientChannel};
 }
@@ -36,7 +48,7 @@ test('basic server and client work correctly', function(t) {
         t.error(err2, 'no error from worker');
         t.deepEqual(arr, ['ALICE', 'BOB'], 'data got uppercased in the worker');
         t.end();
-      }),
+      })
     );
   });
 });
@@ -72,7 +84,7 @@ test('muxrpc server and client work correctly', function(t) {
         t.error(err2, 'no error from worker');
         t.deepEqual(arr, [2, 4, 6, 8], 'got data sourced from the worker');
         t.end();
-      }),
+      })
     );
     pull(stream, client.createStream(), stream);
   });

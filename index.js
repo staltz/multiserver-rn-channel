@@ -4,8 +4,8 @@ module.exports = function makePlugin(opts) {
   return {
     name: 'channel',
 
-    scope: function() { 
-      return opts.scope || 'private';
+    scope: function() {
+      return opts.scope || 'device';
     },
 
     server: function(onConnection, onError) {
@@ -34,7 +34,7 @@ module.exports = function makePlugin(opts) {
           );
         }
         const stream = toDuplex(channel);
-        stream.worker = channel;
+        stream.channel = channel;
         cb(null, stream);
       } catch (err) {
         cb(err);

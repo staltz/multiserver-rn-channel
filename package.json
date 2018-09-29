@@ -10,7 +10,7 @@
   "repository": "https://github.com/staltz/multiserver-rn-channel",
   "license": "MIT",
   "dependencies": {
-    "pull-rn-channel": "1.1.x"
+    "pull-rn-channel": "1.2.x"
   },
   "devDependencies": {
     "multiserver": "1.13.x",
