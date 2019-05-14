@@ -9,7 +9,7 @@ module.exports = function makePlugin(opts) {
     },
 
     server: function(onConnection, onError) {
-      const channel = opts || opts.channel;
+      const channel = !!opts ? opts.channel || opts : null;
       if (!channel) {
         onError(
           new Error(
@@ -24,9 +24,8 @@ module.exports = function makePlugin(opts) {
     },
 
     client: function(_address, cb) {
-      var channel;
       try {
-        channel = opts || opts.channel;
+        const channel = !!opts ? opts.channel || opts : null;
         if (!channel) {
           throw new Error(
             'multiserver-rn-channel plugin requires the channel given in ' +
