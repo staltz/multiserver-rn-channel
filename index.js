@@ -5,7 +5,7 @@ module.exports = function makePlugin(opts) {
     name: 'channel',
 
     scope: function() {
-      return opts.scope || 'device';
+      return 'device';
     },
 
     server: function(onConnection, onError) {
