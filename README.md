@@ -32,7 +32,12 @@ ms.client('channel', function(err, stream) {
     })
   );
 });
+
+//the address has no parameters, there is only one react native channel
+ms.stringify() => "channel"
 ```
+note, there is no scope option. scope is always `device`.
+
 
 **backend.js**
 
